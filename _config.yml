@@ -97,7 +97,7 @@ app_price_color                           : "#4756B5"
 app_description_color                     : "#ffffff"
 
 feature_title_color                       : "#4756B5"
-feature_text_color                        : "#666666"
+feature_text_color                        : "#999999"
 
 feature_icons_foreground_color            : "#4756B5"
 feature_icons_background_color            : "#222222"
