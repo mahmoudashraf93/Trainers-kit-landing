@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="post-page">
+  <header class="post-hero wrap{% if page.image %} has-image{% endif %}">
+    <div class="post-hero-copy">
+      <a class="post-back" href="{{ '/blog/' | relative_url }}">← The coaching journal</a>
+      <p class="eyebrow">{{ page.category | default: 'THE COACHING JOURNAL' | escape }}</p>
+      <h1>{{ page.title | escape }}</h1>
+      {% if page.description %}<p class="post-intro">{{ page.description | escape }}</p>{% endif %}
+      <div class="post-meta"><span>Blog</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>{% if page.reading_time %}<span>{{ page.reading_time | escape }} min read</span>{% endif %}</div>
+      {% if page.download.url %}<div class="post-download"><a class="button" href="{{ page.download.url | relative_url }}" download>{{ page.download.label | default: 'Download the free resource' | escape }} <span aria-hidden="true">↓</span></a>{% if page.download.details %}<p>{{ page.download.details | escape }}</p>{% endif %}</div>{% endif %}
+    </div>
+    {% if page.image %}<figure class="post-hero-image"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="{{ page.image_width | default: 1200 }}" height="{{ page.image_height | default: 800 }}"></figure>{% endif %}
+  </header>
+  <div class="wrap post-layout{% unless page.toc %} no-toc{% endunless %}">
+    {% if page.toc %}<aside class="post-sidebar" aria-label="Article contents"><p class="post-toc-label">ON THIS PAGE</p><nav>{% for item in page.toc %}<a href="#{{ item.id | escape }}">{{ item.title | escape }}</a>{% endfor %}</nav></aside>
+    <details class="post-mobile-toc"><summary>On this page</summary><nav aria-label="Article contents">{% for item in page.toc %}<a href="#{{ item.id | escape }}">{{ item.title | escape }}</a>{% endfor %}</nav></details>{% endif %}
+    <div class="post-body">{{ content }}</div>
+  </div>
+</article>

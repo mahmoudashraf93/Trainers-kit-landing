@@ -1,113 +1,44 @@
-# Automatic App Landing Page
-**Create and deploy an iOS app landing page on GitHub Pages in only five minutes.**
+# TrainersKit website
 
-Designed for GitHub Pages for super easy set up. 
+A Jekyll site for GitHub Pages. The existing privacy policy, terms, and changelog routes are retained.
 
-🔧 Fork this repo
+## Local preview
 
-🗝 Enter iOS App ID in `_config.yml`
+```sh
+bundle install
+bundle exec jekyll serve
+```
 
-📲 Upload video preview or screenshot
+Open the address printed by Jekyll. The production URL and repository base path are configured in `_config.yml`; change both if the site moves to a custom domain.
 
-🎨 Customise site in `_config.yml` (no HTML/CSS)
+## Publishing articles
 
-📝 Write Privacy Policy as markdown in `privacypolicy.md`
+Add Markdown files in `_posts/` named `YYYY-MM-DD-descriptive-slug.md` with front matter:
 
-🕒 Keep a changelog in `CHANGELOG.md`
+```yaml
+---
+layout: post
+title: An informative article title
+description: A concise description of the article.
+category: THE PRACTICAL TOOLKIT
+reading_time: 5
+# Optional: use an actual image and provide its alt text.
+image: /assets/blog/example-preview.jpg
+image_alt: Describe the image for readers who cannot see it
+# Optional: only include a download when the file exists.
+download:
+  url: /assets/downloads/example.xlsx
+  label: Download the free tracker
+  details: Excel workbook · No sign-up required
+# Optional: match each id to a heading in the article.
+toc:
+  - title: What to track
+    id: what-to-track
+---
+```
 
-✅ Site becomes live at GitHub Pages repository URL, e.g. `https://your-username.github.io/your-repo-name/`.
+All fields after `description` are optional. Remove the example image, download, and contents entries unless the article supplies real assets and matching heading IDs.
 
-<img src="https://emilbaehr.com/files/jayson1.png" width="440"> <img src="https://emilbaehr.com/files/slor1.png" width="440">
+Posts appear on `/blog/`, receive a `/blog/descriptive-slug/` URL, and are included in the sitemap. Use original, useful content and descriptive headings. Images should include meaningful alt text. The site is empty until real articles are added.
 
-
-
-
-## Quick Start
-
-### Step 1: Fork this repo.
-After forking the repo, your site will be live immediately on your personal Github Pages account, e.g. `https://yourusername.github.io/your-repo-name/`.
-
-*Make sure GitHub Pages is enabled for your repo. It might take some time for the site to propagate entirely.*
-
-
-
-### Step 2: Enter iOS App ID in `_config.yml`
-Enter your iOS app ID in the `ios_app_id` field and commit your changes. Your site will automatically rebuild with your app icon, name, price and link to App Store.
-
-You can go on with customising almost anything in the `_config.yml` file. 
-
-Things you can customise in `_config.yml`:
-- App Name
-- App Icon
-- App Description
-- App Price
-- App Store Link
-- Play Store Link
-- Press Kit Download Link
-- Cover Image
-- Cover Overlay Color
-- Background Color
-- Text Colors
-- iPhone Device Color
-- Your Name / Company Name
-- Link to Website
-- Social Links and Contact Info
-- Feature List (Title, text, icon)
-
-
-
-### Step 3: Add screenshot or video
-
-#### Adding a screenshot
-Upload a `.png` or `.jpg` of your app to the folder `assets/screenshot/`. The name does not matter. Be sure to delete the placeholder `yourscreenshot.png`.
-
-#### Adding video
-Upload your video to the folder `assets/videos/`. To have support for most browsers, you need to upload two files – one for Safari and one for Chrome/Firefox.
-
-Video formats supported by Chrome and Firefox:
-- `.webm`
-- `.ogg`
-
-Video formats supported by Safari:
-- `.mp4`
-- `.mov`
-
-#### Resolutions
-The videos and screenshots must have one of the following resolutions:
-- 828x1792
-- 1125x2436
-- 1242x2688
-
-
-
-### Step 4: Edit (or remove) Privacy Policy and Changelog
-Your site automatically includes pages for a Privacy Policy and a Changelog. Change the content of these pages by editing the `privacypolicy.md` and `CHANGELOG.md` files in the `_pages` directory.
-
-In each of the markdown files, you can set the `include_in_header:` value to either `true` or `false`. This determines if the page is included in the top navigation.
-By default, only the Changelog is included in the top navigation. The title of the navigation item can also be edited, by editing the `title:` in each markdown file.
-
-If you need to, you can create additional markdown based pages just by creating an `.md` file like the `privacypolicy.md` and `CHANGELOG.md` files in the `_pages` directory.
-
-**Please note:** The Privacy Policy and Changelog provided are written using dummy text, so please adapt each of them for your own app.
-You can also choose not to include these pages, by simple deleting the `privacypolicy.md` and `CHANGELOG.md` files.
-
-
-
-
-## Feedback
-If you have feedback regarding bugs or improvements, open an issue, @ me on Twitter or write me an email. You can find my contact info on my website.
-
-I'd love to see the sites you create using this little tool.
-
-## Credits
-- [Jekyll](https://github.com/jekyll/jekyll)
-- [FontAwesome](https://fontawesome.github.io/Font-Awesome/)
-
-## Donations
-[Donations are welcome](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=S8ZZT3JXJPN92&currency_code=USD&source=url)
-
-## Author
-[Emil Baehr](https://emilbaehr.com/)
-
-## License
-[MIT License](LICENSE)
+The `sitemap.xml`, `robots.txt`, canonical links, and social metadata use the configured production URL. Submit the sitemap in Google Search Console after publishing and update the configuration if the domain changes.
